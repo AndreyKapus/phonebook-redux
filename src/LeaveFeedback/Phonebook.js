@@ -3,8 +3,12 @@ export const Phonebook = () => {
         <div>
             <h1>Phonebook</h1>
             <form>
-                <label>
-                    <input type="input"/>
+                <label>Name
+                    <input type="input" name="name"/>
+                </label>
+                <br/>
+                <label>Number
+                    <input type="input" name="number"/>
                 </label>
                 <button type="submit">Submit</button>
             </form>

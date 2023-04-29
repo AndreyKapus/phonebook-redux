@@ -9,7 +9,10 @@ export const contactsSlice = createSlice({
         {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
       ],
       reducers: {
-
-      }
+        addContact(state, action) {
+          state.push(action.payload);
+      },
+    },
 });
 
+export const contactsReducer = contactsSlice.reducer
