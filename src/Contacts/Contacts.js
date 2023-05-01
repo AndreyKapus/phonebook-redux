@@ -1,20 +1,16 @@
 import { useSelector } from "react-redux";
-import { nanoid } from 'nanoid'
+import ContactsItem from "./ContactsItem/ContactsItem";
 
 
 const Contacts = () => {
     const contacts = useSelector(state => state.contacts);
-
 
     return(
         <div>
             <h2>Contacts</h2>
             <ul>
                 {contacts.map(({name, number, id}) => {
-                    return <li key={id}>
-                        <p>{name}</p>
-                        <p>{number}</p>
-                    </li>
+                    return <ContactsItem key={id} id={id} name={name} number={number}/>
                 })}
             </ul>
         </div>

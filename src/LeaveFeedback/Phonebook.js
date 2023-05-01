@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { addContact } from "../Redux/ContactsSlice";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
 export const Phonebook = () => {
     const [items, setItems] = useState({name: '', number: ''})
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts);
-   
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -15,9 +14,7 @@ export const Phonebook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const {name, value} = e.target;
-        setItems(prevState => ({...prevState, [name]: value}))
-        dispatch(addContact(items))
+        dispatch(addContact({id: nanoid(), ...items}))
     }
 
     const {name, number} = items
