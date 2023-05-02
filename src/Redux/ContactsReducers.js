@@ -1,19 +1,21 @@
-import * as contactActions from './ContactsActions';
+// import * as contactActions from './ContactsActions';
+import { fetchContacts } from "./ContactsOperations";
 const { createReducer, combineReducers } = require("@reduxjs/toolkit");
 
 
+
 const items = createReducer([], {
-    [contactActions.fetchContactsSuccess]: (_, action) => action.payload
+    [fetchContacts.fulfilled]: (_, action) => action.payload
 });
 
 const isLoading = createReducer(false, {
-    [contactActions.fetchContactsRequest]: () => true,
-    [contactActions.fetchContactsSuccess]: () => false,
-    [contactActions.fetchContactsError]: () => false,
+    [fetchContacts.pending]: () => true,
+    [fetchContacts.fulfilled]: () => false,
+    [fetchContacts.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-    [contactActions.fetchContactsError]: (_, action) => action.payload
+    [fetchContacts.rejected]: (_, action) => action.payload
 })
 
 export default combineReducers({
