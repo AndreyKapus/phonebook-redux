@@ -3,7 +3,7 @@ import ContactsItem from "./ContactsItem";
 
 
 const Contacts = () => {
-    const contacts = useSelector(state => state.contacts);
+    const contacts = useSelector(state => state.contacts.items);
 
     return(
         <div>
