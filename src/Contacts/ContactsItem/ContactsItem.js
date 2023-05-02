@@ -3,7 +3,8 @@
 const ContactsItem = ({id, name, number}) => {
     return(
         <li id={id}>
-            {name}: {number}
+            <p>{name}: {number}</p>
+            <button type="button">delete</button>
         </li>
     )
 }

@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import ContactsItem from "./ContactsItem";
+import * as contactsSelectors from '../../Redux/ContactsSelectors'
 
 
 const Contacts = () => {
-    const contacts = useSelector(state => state.contacts.items);
+    const contacts = useSelector(contactsSelectors.allContacts);
     return(
         <div>
             <h2>Contacts</h2>
