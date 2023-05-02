@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import ContactsItem from "./ContactsItem/ContactsItem";
+import ContactsItem from "./ContactsItem";
 
 
 const Contacts = () => {
