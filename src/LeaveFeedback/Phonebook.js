@@ -14,7 +14,7 @@ export const Phonebook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addContact({id: nanoid(), ...items}))
+        // dispatch(addContact({id: nanoid(), ...items}))
     }
 
     const {name, number} = items

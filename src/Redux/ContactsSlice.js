@@ -9,12 +9,20 @@ export const contactsSlice = createSlice({
     },
 
       reducers: {
-        addContact(state, action) {
-          state.push(action.payload);
+        fetchPending(state) {
+          state.isLoading = true;
       },
+        fetchFulfield(state, action) {
+          state.isLoading = false;
+          state.items = action.payload;
+        },
+        detchError(state, action) {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
     },
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const {addContact} = contactsSlice.actions
+export const {fetchPending, fetchFulfield, detchError} = contactsSlice.actions
  
