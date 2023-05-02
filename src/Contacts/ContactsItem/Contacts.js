@@ -9,9 +9,9 @@ const Contacts = () => {
         <div>
             <h2>Contacts</h2>
             <ul>
-                {contacts.map(({name, number, id}) => {
+                {contacts.lenght > 0 ? contacts.map(({name, number, id}) => {
                     return <ContactsItem key={id} id={id} name={name} number={number}/>
-                })}
+                }) : <div>error</div>}
             </ul>
         </div>
     )
