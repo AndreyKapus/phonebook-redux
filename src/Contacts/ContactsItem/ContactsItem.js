@@ -1,9 +1,9 @@
 
 
-const ContactsItem = ({id, name, number}) => {
+const ContactsItem = ({id, name, phone}) => {
     return(
         <li id={id}>
-            <p>{name}: {number}</p>
+            <p>{name}: {phone}</p>
             <button type="button">delete</button>
         </li>
     )

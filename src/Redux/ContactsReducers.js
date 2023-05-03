@@ -1,5 +1,7 @@
 // import * as contactActions from './ContactsActions';
-import { fetchContacts } from "./ContactsOperations";
+
+
+import { fetchContacts, addContact } from "./ContactsOperations";
 const { createReducer, combineReducers } = require("@reduxjs/toolkit");
 
 const items = createReducer([], {
@@ -20,4 +22,10 @@ export default combineReducers({
     items,
     isLoading,
     error,
+});
+
+export const add = createReducer({}, {
+    [addContact.pending]: () => true,
+    [addContact.fulfilled]: () => false,
+    [addContact.rejected]: () => false,
 })
