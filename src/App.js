@@ -3,11 +3,14 @@ import Contacts from './Contacts/ContactsItem/Contacts';
 import Phonebook from './LeaveFeedback/Phonebook';
 import * as contactOperations from './Redux/ContactsOperations'
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsLoading, getError } from 'Redux/ContactsSelectors';
 
 
 function App() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(contactOperations.fetchContacts())
@@ -16,6 +19,7 @@ function App() {
   return (
     <div className="App">
         <Phonebook/>
+        {isLoading && !error && <div>is loading</div>}
         <Contacts/>
     </div>
   );

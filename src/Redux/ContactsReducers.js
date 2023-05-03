@@ -2,8 +2,6 @@
 import { fetchContacts } from "./ContactsOperations";
 const { createReducer, combineReducers } = require("@reduxjs/toolkit");
 
-
-
 const items = createReducer([], {
     [fetchContacts.fulfilled]: (_, action) => action.payload
 });
