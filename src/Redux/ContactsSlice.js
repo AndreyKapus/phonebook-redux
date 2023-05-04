@@ -26,7 +26,7 @@ export const contactsSlice = createSlice({
             state.error = action.payload.error;
         },
 
-        [addContact.pending] (state, action) {
+        [addContact.pending] (state) {
             state.isLoading = true;
         },
         
