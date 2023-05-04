@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { fetchContacts } from 'FetchContcts/FetchContacts';
 import { fetchContacts, addContact } from './ContactsOperations';
 
 export const contactsSlice = createSlice({
@@ -11,25 +10,33 @@ export const contactsSlice = createSlice({
     },
 
      extraReducers: {
+        [fetchContacts.pending] (state) {
+            state.isLoading = true;
+        },
         
         [fetchContacts.fulfilled] (state, action) {
             state.isLoading = true;
            state.items = action.payload;
            state.isLoading = false;
         },
+
+        [fetchContacts.rejected] (state, action) {
+            state.error = action.payload.error;
+        },
+
+        [addContact.pending] (state, action) {
+            state.isLoading = true;
+        },
         
         [addContact.fulfilled] (state, action) {
-            state.isLoading = true;
-            state.items.push(action.payload)
+            state.isLoading = false;
+            state.items.push(action.payload);
+            state.error = null;
+        },
+
+        [addContact.rejected] (state, action) {
+            state.error = action.payload.error;
         }
-        // fetchFulfield(state, action) {
-        //   state.isLoading = false;
-        //   state.items = action.payload;
-        // },
-        // detchError(state, action) {
-        //   state.isLoading = false;
-        //   state.error = action.payload;
-        // }
     },
 });
 
