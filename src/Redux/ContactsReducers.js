@@ -16,16 +16,18 @@ const isLoading = createReducer(false, {
 
 const error = createReducer(null, {
     [fetchContacts.rejected]: (_, action) => action.payload
+});
+
+export const add = createReducer({}, {
+    [addContact.pending]: (state) => state.isLoading = true,
+    [addContact.fulfilled]: (state, action) => state.contacts.items.push(action.payload),
+    [addContact.rejected]: (state) => state.isLoading = false,
 })
 
 export default combineReducers({
     items,
     isLoading,
     error,
+    add,
 });
 
-export const add = createReducer({}, {
-    [addContact.pending]: () => true,
-    [addContact.fulfilled]: () => false,
-    [addContact.rejected]: () => false,
-})

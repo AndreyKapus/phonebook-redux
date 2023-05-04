@@ -1,7 +1,7 @@
 import { useDispatch} from "react-redux";
 import { addContact } from "../Redux/ContactsOperations";
 import { useState } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 export const Phonebook = () => {
     const [items, setItems] = useState({name: '', phone: ''})
@@ -16,10 +16,9 @@ export const Phonebook = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(addContact(items))
-        console.log(items)
         setItems({name: '', phone: ''})
-        // dispatch(addContact({id: nanoid(), ...items}))
-    }
+    };
+    
 
     const {name, phone} = items
     return(
