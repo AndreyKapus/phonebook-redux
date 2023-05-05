@@ -1,18 +1,18 @@
-import { useSelector } from "react-redux";
-import ContactsItem from "./ContactsItem";
-import {contactsSelectors} from '../../Redux'
+// import { useSelector } from "react-redux";
+// // import ContactsItem from "./ContactsItem";
+// import {contactsSelectors} from '../../Redux'
 
 
 const Contacts = () => {
-    const contacts = useSelector(contactsSelectors.allContacts);
+    // const contacts = useSelector(contactsSelectors.allContacts);
     return(
         <div>
             <h2>Contacts</h2>
-            <ul>
+            {/* <ul>
                 {contacts && contacts.map(({name, phone, id}) => {
                     return <ContactsItem key={id} id={id} name={name} phone={phone}/>
                 })}
-            </ul>
+            </ul> */}
         </div>
     )
 };
