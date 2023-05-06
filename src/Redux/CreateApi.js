@@ -7,8 +7,19 @@ export const contactsApi = createApi({
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
       query: (name) => `contacts`,
+      providesTags: ['contacts']
     }),
+    createContact: builder.mutation({
+      query: newContact => ({
+        url: `contacts`,
+        method: 'POST',
+        body: {
+          name: newContact.name,
+        },
+      }),
+      invalidatesTags: ['contacts']
+    })
   }),
 })
 
-export const { useGetPokemonByNameQuery } = contactsApi
+export const { useGetPokemonByNameQuery, useCreateContactMutation } = contactsApi

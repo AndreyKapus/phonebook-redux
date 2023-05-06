@@ -1,12 +1,13 @@
 import { useDispatch} from "react-redux";
 // import { addContact } from "../Redux/ContactsOperations";
 import { useState } from "react";
-import { useGetPokemonByNameQuery } from "Redux/CreateApi";
+import { useCreateContactMutation, useGetPokemonByNameQuery } from "Redux/CreateApi";
 
 export const Phonebook = () => {
     const [contacts, setContact] = useState({});
 
-    const { data, error, isLoading } = useGetPokemonByNameQuery()
+    const { data, error, isLoading } = useGetPokemonByNameQuery();
+    const [createContact] = useCreateContactMutation()
     // const [items, setItems] = useState({name: '', phone: ''})
     // const dispatch = useDispatch();
 
@@ -18,9 +19,10 @@ export const Phonebook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        createContact(contacts)
         // dispatch(addContact(items))
-        setContact({name: '', phone: ''})
+        setContact({name: '', phone: ''});
+        
     };
     
 
@@ -40,7 +42,7 @@ export const Phonebook = () => {
                 <button type="submit">Submit</button>
             </form>
 
-            {data && data.map(item => <div>{item.name}: <div>{item.phone}</div></div>)}
+            {data && data.map(item => <div key={item.id}>{item.name}: <div>{item.phone}</div></div>)}
         </div>
     )
 };
